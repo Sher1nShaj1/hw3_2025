@@ -2,8 +2,15 @@
 
 /* Step 1: Write selector/rule property to add an underline when
 links in the navigation are in the hover or focus state. */
+nav a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
+
 nav a:hover, nav a:focus {
   text-decoration: underline;
+  color: #007bff;
 }
 
 /* Step 2a: Write selector/rule property to position the default position for the skip class element */
@@ -11,17 +18,17 @@ nav a:hover, nav a:focus {
   position: absolute;
   top: -40px;
   left: 0;
+  z-index: 10;
   transition: top 0.3s ease;
 }
 
 /* Step 2b: Write selector/rule property to position the skip class element when it is in focus */
-.skip a {
-  display: block;
-  padding: 10px 15px;
+.skip:focus {
+  top: 20px; /* Move it down to make it visible */
   background-color: #007bff;
   color: white;
+  padding: 10px 15px;
   text-decoration: none;
-  font-size: 16px;
   border-radius: 5px;
 }
 
@@ -35,8 +42,7 @@ nav a:hover, nav a:focus {
 .container {
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
-  gap: 15px;
-  margin: 0 15px;
+  grid-gap: 15px;
 }
 
 /* Step 5: Write selector/rule property to add the background image to the 
@@ -95,23 +101,19 @@ four rows in the grid. */
 
 /* Step 8: Write the selector/rule property to style the .text-block class. */
 .text-block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
+  position: relative;
+  z-index: 2; /* Make sure the text is above the image */
 }
 
 /* Add your media query here */
-@media (min-width: 700px) {
+@media (min-width: 800px) {
   /* Step 9: Write the selector/rule property to style the nav element */
   nav {
     padding: 30px 0;
-    position: absolute;
+    position: relative;
     right: 0; 
     top: 0;
-    height: 100vh;
-    /* width: auto; */
+    width: 100%;
   }
 
   /* Step 10: Write the selector/rule property to update the .container class */
